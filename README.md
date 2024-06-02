@@ -31,6 +31,8 @@
 ```python
 if __name__ == "__main__":
     api_config = ApiConfig.from_json_file("./config.json")
+    system_prompt = "You are a helpful assistant."
+
     prompts = [
         "What is the capital of France?",
         "Explain the theory of relativity.",
@@ -38,7 +40,7 @@ if __name__ == "__main__":
         "Hi, say this is a test."
     ]
 
-    for prompt, response in process_prompts_with_retries(api_config, prompts):
+    for prompt, response in process_prompts_with_retries(api_config, prompts, system_prompt=system_prompt):
         response = response.strip().replace("\n", "")
         print(f"Prompt: {prompt}\nResponse: {response}\n")
 ```
